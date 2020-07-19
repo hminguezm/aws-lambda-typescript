@@ -1,0 +1,36 @@
+service: ${file(package.json):name}
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  stage: ${env:ENVIRONMENT_TYPE, 'dev'}
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action:
+        - "states:StartExecution"
+      Resource:
+        - "*"
+
+functions:
+  version:
+    handler: src/adapters/version.handler
+    events:
+      - http:
+          path: /version
+          method: get
+
+plugins:
+  - serverless-offline
+  - serverless-webpack
+
+package:
+  individually: true
+custom:
+  serverless-offline:
+    httpPort: ${env:SERVERLESS_PORT, '4000'}
+    noPrependStageInUrl: true
+  webpack:
+    webpackConfig: 'webpack.config.js'
+    includeModules: true
+    packager: 'yarn'
+    excludeFiles: src/**/*.test.js
