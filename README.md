@@ -47,11 +47,6 @@ docker-compose up -d --build --force-recreate; docker-compose logs -f
 docker-compose -f docker-compose.yml up -d --build --force-recreate; docker-compose -f docker-compose.yml logs -f
 ```
 
-## Reference Links
-
-+ [Serverless framework documentation](https://serverless.com/framework/docs/)
-+ [docker-compose Documentation](https://docs.docker.com/compose/)
-
 # Deploy at AWS
 
 For make an deploy at AWS, should be make config your credential, at this link can see as config that (https://www.serverless.com/framework/docs/providers/aws/cli-reference/config-credentials/).
@@ -59,3 +54,8 @@ For make an deploy at AWS, should be make config your credential, at this link c
 ```
 serverless deploy
 ```
+
+## Reference Links
+
++ [Serverless framework documentation](https://serverless.com/framework/docs/)
++ [docker-compose Documentation](https://docs.docker.com/compose/)
